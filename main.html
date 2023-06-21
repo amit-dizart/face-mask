@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Art and Culture</title>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js" crossorigin="anonymous"></script>
+    <script src="https://www.webrtc-experiment.com/EBML.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js"
+        crossorigin="anonymous"></script>
+
+    <script defer language="javascript" type="text/javascript" src="./JS/images-to-video.js"></script>
+    <script defer language="javascript" type="text/javascript" src="./JS/download.js"></script>
+    <script defer language="javascript" type="text/javascript" src="./JS/selfieSegmentation.js"></script>
+    <script defer language="javascript" type="text/javascript" src="./JS/index.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <!-- <script src="lib/tf-js-core.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script> -->
+    <!-- <script src="lib/tf-js-converter.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/facemesh"></script>
+    <!-- <script src="lib/tf-js-facemesh.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.116.1/build/three.min.js"></script>
+    <!-- <script src="lib/three.js"></script> -->
+    <script src="./lib/triangulation.js"></script>
+    <script src="./JS/frontProjectionUVMap.js"></script>
+    <script src="./JS/positionBufferData.js"></script>
+    <script src="./JS/FacePaint.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <!-- <script src="lib/flickity/flickity.pkgd.min.js"></script> -->
+    <script src="https://unpkg.com/flickity-hash@1/hash.js"></script>
+    <!-- <script src="lib/flickity/hash.js"></script> -->
+    <script defer language="javascript" type="text/javascript" src="./JS/detect.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section id="cameraSection">
+        <div id="shutter">
+            Loading Filter..
+        </div>
+
+        <div class="cameraOutput">
+            <video allow="camera; microphone" id="video" width="100%" height="100%" autoplay playsinline></video>
+            <canvas id="faceCanvas" width="100%" height="100%"></canvas>
+        </div>
+
+        <div id="mainCancleButtonContainer">
+            <div id="mainCancleButton">
+                ✕
+            </div>
+        </div>
+
+        <div id="bottomSection" class="bottomSection">
+            <div class="message" id="message">
+                Tap on Filter to start
+            </div>
+            <div class="filtersRow" id="filters"></div>
+
+            <div class="loading" id="loading">
+                <div>
+                    Loading filters..
+                </div>
+                <div class="loader"></div>
+            </div>
+        </div>
+        <div id="camLoader">
+            Detecting face, Please wait.
+        </div>
+
+
+
+        <div class="recordingButtons">
+            <div id="recordButtonContainer" class="record">
+                <div class="tapTo">Tap to start recording</div>
+                <div> <img src="./assets/record.png" alt="" id="recordButton"> </div>
+            </div>
+            <div id="stopButtonContainer" class="stopButtonContainer">
+                <img src="./assets/recording.png" alt="" id="stopButton">
+                </a>
+            </div>
+        </div>
+
+        <div id="popUp">
+            <div>
+                <div id="cancleButtonContainer">
+                    <div id="cancleButton">
+                        ✕
+                    </div>
+                </div>
+                <img src="./assets/dances/kathak.png" id="danceImage" alt="">
+            </div>
+            <div id="descriptionBox">
+                <div id="title">
+                    Kathakali
+                </div>
+                <div id="headText">
+                    Keral, India | 16th Century
+                </div>
+                <div id="description">
+                    It is a "story play" genre of art, but one distinguished by the elaborately colourful make-up and
+                    costumes of
+                    the traditional male actor-dancers. It synthesizes music, vocal performers, choreography and hand
+                    and facial
+                    gestures together to express ideas.
+                </div>
+
+                <div class="buttonContainer">
+                    <button id="startButton" class="buttons">
+                        START DANCING
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mimic">
+            <div>
+                <img id="mimicImage" src="./assets/mimic/mimic1.png" alt="">
+            </div>
+            <div class="mimicText">MIMIC IN <span id="timer">2S</span> </div>
+        </div>
+
+        <div id="capturing">
+            <img src="./assets/mimic/capturing.png" alt="">
+            <div id="capturingText">
+                Capturing...
+            </div>
+        </div>
+        <div class="topBar" id="topBar"></div>
+        <div class="bottomBar" id="bottomBar"></div>
+
+        <!-- HIDDEN ELEMENTS -->
+        <img src="" alt="" id="baseImg" style="display: none;">
+        <img src="" alt="" id="clickedImg">
+        <div id="face_1" style="display: none;">
+            <img src="" alt="" id="rightEye">
+            <img src="" alt="" id="leftEye">
+            <img src="" alt="" id="nose">
+            <img src="" alt="" id="mouthLeft">
+            <img src="" alt="" id="mouthRight">
+            <img src="" alt="" id="earLeft">
+            <img src="" alt="" id="earRight">
+            <img src="" alt="" id="head">
+            <img src="" alt="" id="forehead">
+            <img src="" alt="" id="cheekLeft">
+            <img src="" alt="" id="cheekRight">
+        </div>
+        <canvas style="display: none;" id="backgroundCanvasElement"></canvas>
+        <canvas id="videoCanvas"></canvas>
+        <canvas id="canvas"></canvas>
+        <audio hidden loop controls src="./assets/audio/Parai.wav" type="audio/mpeg" id="audioElement"></audio>
+
+    </section>
+
+    <!-- GENERATE VIDEO SECTION -->
+
+    <section id="generateVideo">
+        <div>
+            <img src="/assets/loader.webp" class="generatingVidGif" />
+            <div class="generating">Generating Video</div>
+        </div>
+        <div>
+            <div class="headText didYouKnow">
+                Did You Know?
+            </div>
+            <div class="primaryColor generateVideoBodyDescriptionText">
+                Mimic Navrasa expressions to the beat of Indian traditional ritual performances. See art filters
+                applied to your face and share the generated experience with friends.
+            </div>
+        </div>
+    </section>
+
+    <!-- DOWNLOAD VIDEO SECTION  -->
+    <section id="downloadVideoSection">
+        <div class="lastPageButtons">
+            <div id="restart">
+                ↺
+            </div>
+
+            <div id="back">
+                ✕
+            </div>
+        </div>
+
+        <video id="myVideo" controls="controls" class="myVideo"></video>
+        <div>
+            <button class="buttons" id="downloadVidButton"><span><img src="./assets/downloadIcon.png" alt=""></span>
+                DOWNLOAD</button>
+            <div class="primaryColor descriptionText googleArt" id="googleArt">Google Arts & Culture</div>
+        </div>
+    </section>
+
+</body>
+
+</html>

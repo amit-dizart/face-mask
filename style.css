@@ -1,0 +1,922 @@
+@font-face {
+    font-family: 'Roboto-Normal';
+    font-style: normal;
+    src: url('assets/fonts/roboto.woff2') format('woff2');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+* {
+    font-family: 'Inter', sans-serif;
+    /* font-family: Roboto-Normal; */
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    /* max-width: 100vw;
+    max-height: 100vh; */
+    overflow: hidden;
+}
+
+.version {
+    text-align: center;
+    opacity: 0.54;
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+
+#clickedImg{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    z-index: 4;
+    width: 460px;
+}
+
+
+
+.indexPage {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+    margin: auto;
+    flex-direction: column;
+    height: 95vh;
+}
+
+.headImgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headImg {
+    width: 350px;
+    height: 350px;
+    margin: 0 auto;
+}
+
+.navrasam {
+    font-size: 22px;
+    font-weight: 400
+}
+
+.navrasamDescriptionText {
+    margin-top: 20px;
+    font-size: 15px;
+    text-align: justify;
+    opacity: 0.64;
+}
+
+#shutter{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #9CB732;
+    border-radius: 8px;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 5; 
+    display: none;   
+    text-align: center;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.buttons {
+    width: 183px;
+    height: 48px;
+    background: #9CB732;
+    border-radius: 8px;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* #cameraSection {
+    display: none;
+} */
+
+.cameraOutput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    background-color: #000000;
+}
+
+#camLoader {
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: 350px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+
+}
+
+#bottomSection {
+    display: none;
+}
+
+#video {
+    /* width: 100vw;
+    height: 100vh; */
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    transform: rotateY(180deg);
+    /* Safari and Chrome */
+    -webkit-transform: rotateY(180deg);
+    /* Firefox */
+    -moz-transform: rotateY(180deg);
+}
+
+#videoCanvas,
+#faceCanvas, 
+#backgroundCanvasElement
+{
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    position: absolute;
+}
+
+#faceCanvas {
+    transform: scaleX(-1);
+    height: 150vh !important;
+}
+
+#videoCanvas {
+    opacity: 0;
+    transform: scaleX(-1);
+    transition: opacity 330ms ease-in-out;
+}
+
+#mainCancleButtonContainer {
+    position: absolute;
+    top: 30px;
+    display: flex;
+    width: 90%;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 4;
+}
+
+#mainCancleButton {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(217, 217, 217, 1);
+    /* color: #fff; */
+    border-radius: 50%;
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.filtersRow {
+    position: absolute;
+    width: 640px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: none;
+    justify-content: justify-between;
+    align-items: center;
+    overflow-x: scroll;
+    z-index: 2;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    cursor: pointer;
+    color: #fff;
+    height: 120px;
+    width: 250px;
+}
+
+.filter .filterName {
+    font-size: 14px;
+}
+
+.filter div {
+    margin-top: 4px;
+    opacity: 0.5;
+}
+
+.selectedFilter div {
+    opacity: 1;
+}
+
+
+.selectedFilter img {
+    border: 3px solid #9CB732;
+    border-radius: 22px;
+    opacity: 1;
+}
+
+.message {
+    display: none;
+    position: absolute;
+    width: 100%;
+    bottom: 170px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    opacity: 0.5;
+}
+
+
+.loading {
+    position: absolute;
+    width: 100%;
+    bottom: 60px;
+    height: 100px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    opacity: 0.5;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loader {
+    border: 7px solid #f3f3f380;
+    /* Light grey */
+    border-top: 7px solid #9CB732;
+    /* Blue */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#popUp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #FFFFFF;
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    z-index: 3;
+    width: 25%;
+    margin: 0 auto;
+    margin-top: 6vh;
+    /* align-self: center; */
+}
+
+#cancleButtonContainer {
+    height: 0px;
+    display: flex;
+    background-color: #00000000;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+#cancleButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 700;
+    position: relative;
+    top: 30px;
+    cursor: pointer;
+    z-index: 4;
+    background-color: rgba(217, 217, 217, 1);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+
+#danceImage {
+    width: 25vw;
+}
+
+#descriptionBox {
+    padding: 20px;
+}
+
+#title {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+}
+
+#headText {
+    font-size: 15px;
+    font-weight: 500;
+    color: #000000;
+    opacity: 0.74;
+}
+
+#description {
+    font-size: 15px;
+    font-weight: 300;
+    color: #000000;
+    text-align: justify;
+    margin-top: 20px;
+    line-height: 22px;
+}
+
+.buttonContainer {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recordingButtons {
+    z-index: 3;
+    display: flex;
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.tapTo {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    margin-bottom: 20px;
+    opacity: 0.6;
+}
+
+#recordButtonContainer {
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#stopButtonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#recordButtonContainer,
+#stopButtonContainer {
+    display: none;
+}
+
+
+#mimic {
+    display: none;
+    margin: auto;
+    position: absolute;
+    top: 30px;
+    z-index: 4;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-direction: column;
+    width: 100%;
+}
+
+#mimic img {
+    border: 3px solid #9CB732;
+    padding: 3px;
+    border-radius: 50%;
+    width: 95px;
+    height: 95px;
+    z-index: 4;
+}
+
+.mimicText {
+    z-index: 4;
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.762);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    /* opacity: 0.64; */
+}
+
+#timer {
+    z-index: 4;
+    color: #9CB732;
+    font-size: 30px;
+    margin-left: 10px;
+    opacity: 1;
+}
+
+#capturing {
+    display: none;
+    margin: auto;
+    position: absolute;
+    top: 30px;
+    z-index: 4;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-direction: column;
+    width: 100%;
+}
+
+#capturing img {
+    z-index: 4;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+#capturingText {
+    z-index: 4;
+    margin-top: 10px;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    opacity: 0.64;
+}
+
+
+
+.topBar {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+    width: 100%;
+    height: 150px;
+    background-image: linear-gradient(to top, rgba(112, 112, 112, 0), rgb(0, 0, 0));
+}
+
+.bottomBar {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1;
+    width: 100%;
+    height: 200px;
+    background-image: linear-gradient(to bottom, rgba(68, 68, 68, 0), rgb(0, 0, 0));
+}
+
+
+/* GENERATE VIDEO SECTION  */
+
+#generateVideo {
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 25%;
+    height: 90vh;
+    margin: auto;
+}
+
+.generatingVidGif {
+    width: 400px;
+    height: 200px;
+}
+
+.generating {
+    font-size: 30px;
+    text-align: center;
+}
+
+.didYouKnow {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.generateVideoBodyDescriptionText {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    margin-top: 10px;
+    text-align: justify;
+    opacity: 0.64;
+}
+
+/* DOWNLOAD VIDEO SECTION */
+
+#downloadVideoSection {
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 25%;
+    height: 90vh;
+    margin: auto;
+}
+
+#downloadVidButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#downloadVidButton img {
+    margin-right: 11px;
+    width: 16px;
+    height: 16px;
+}
+
+#myVideo {
+    /* width: 640px;
+    height: 350px; */
+    border-radius: 10px;
+}
+
+#googleArt {
+    text-align: center;
+    margin-top: 20px;
+    opacity: 0.54;
+    font-weight: 500
+}
+
+.lastPageButtons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#restart {
+    font-size: 25px;
+    background-color: rgba(217, 217, 217, 1);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+#back {
+    font-size: 25px;
+    background-color: rgba(217, 217, 217, 1);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1599px) {
+    #video {
+        width: 100vw !important;
+        height: 100vh !important;
+        border-radius: 0px;
+        margin-top: 0vh;
+    }
+
+    #video,
+    #faceCanvas {
+        width: 100vw !important;
+        height: 100vh !important;
+        object-fit: cover;
+    }
+  }    
+
+@media screen and (max-width : 1200px) {
+    body {
+        overflow: hidden;
+    }
+
+    #video {
+        width: 100vw !important;
+        height: 100vh !important;
+        border-radius: 0px;
+        margin-top: 0vh;
+    }
+
+    #video,
+    #faceCanvas {
+        width: 100vw !important;
+        height: 100vh !important;
+        object-fit: cover;
+    }
+
+    .filtersRow {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        overflow-x: scroll;
+        color: #fff;
+    }
+
+    .filter {
+        width: 120px;
+    }
+
+    .filter img {
+        width: 94px;
+        height: 87px;
+        margin-bottom: 5px;
+    }
+
+    .selectedFilter img {
+        border: 4px solid #9CB732;
+        border-radius: 23px;
+    }
+
+    .selectedFilter div {
+        opacity: 1;
+    }
+
+    .message {
+        position: absolute;
+        width: 100%;
+        bottom: 150px;
+        text-align: center;
+        color: rgb(255, 255, 255);
+        font-size: 16px;
+        z-index: 2;
+    }
+
+    #popUp {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #FFFFFF;
+        display: none;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        z-index: 3;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 10vh;
+    }
+
+    #cancleButtonContainer {
+        height: 0px;
+        display: flex;
+        background-color: #00000000;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+    }
+
+    #cancleButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        position: relative;
+        top: 30px;
+        cursor: pointer;
+        z-index: 4;
+        background-color: rgba(217, 217, 217, 1);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+    }
+
+
+    #danceImage {
+        width: 80vw;
+    }
+
+    #descriptionBox {
+        padding: 20px;
+    }
+
+    #title {
+        margin-top: 20px;
+        font-size: 25px;
+        font-weight: 600;
+        color: #000000;
+    }
+
+    #headText {
+        font-size: 15px;
+        font-weight: 500;
+        color: #3b3b3b;
+    }
+
+    #description {
+        font-size: 15px;
+        font-weight: 300;
+        color: #000000;
+        text-align: justify;
+        margin-top: 20px;
+    }
+
+
+    #mimic {
+        display: none;
+        margin: auto;
+        position: absolute;
+        top: 30px;
+        z-index: 4;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #mimic img {
+        border: 3px solid #9CB732;
+        padding: 3px;
+        border-radius: 50%;
+        width: 95px;
+        height: 95px;
+        z-index: 4;
+    }
+
+    .mimicText {
+        z-index: 4;
+        margin-top: 10px;
+        color: white;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        opacity: 0.6;
+    }
+
+    #timer {
+        z-index: 4;
+        color: #9CB732;
+        font-size: 30px;
+        margin-left: 10px;
+        opacity: 1;
+    }
+
+    #capturing {
+        display: none;
+        margin: auto;
+        position: absolute;
+        top: 30px;
+        z-index: 4;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #capturing img {
+        z-index: 4;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+    }
+
+    #capturingText {
+        z-index: 4;
+        margin-top: 10px;
+        color: white;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .topBar {
+        height: 200px;
+    }
+
+    .bottomBar {
+        height: 250px;
+    }
+
+    /* GENERATE VIDEO SECTION */
+
+    #generateVideo {
+        width: 90%;
+    }
+
+    .generating {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .didYouKnow {
+        font-size: 20px;
+    }
+
+    .generateVideoBodyDescriptionText {
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .generatingVidGif {
+        width: 250px;
+        height: 150px;
+    }
+
+    /* DOWNLOAD VIDEO SECTION */
+
+    #downloadVideoSection {
+        justify-content: space-evenly;
+        height: 95vh;
+        width: 95%;
+    }
+
+    #myVideo {
+        /* width: 80%;
+        height: 60%; */
+        max-width: 80%;
+        border-radius: 10px;
+    }
+
+    #googleArt {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 15px;
+    }
+
+
+    .indexPage {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 85%;
+        margin: auto;
+        flex-direction: column;
+        height: 90vh;
+    }
+
+    .headImgContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .headImg {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+    }
+
+    .navrasam {
+        font-size: 22px;
+    }
+
+    .navrasamDescriptionText {
+        margin-top: 10px;
+        font-size: 15px;
+        text-align: justify;
+    }
+
+    .lastPageButtons {
+        font-size: 20px;
+        font-weight: 700;
+        width: 85%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+}
