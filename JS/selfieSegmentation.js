@@ -12,7 +12,7 @@ function onResults(results) {
     console.log("background removal");
 
     const image = new Image();
-    image.src = './assets/bg.jpg';
+    image.src = 'https://wallpapers.com/images/featured/x69l528mcyszadke.jpg';
     image.onload = function () {
         backgroundCanvasCtx.save();
         backgroundCanvasCtx.drawImage(results.image, 0, 0, backgroundCanvasElement.width, backgroundCanvasElement.height);
