@@ -6,7 +6,7 @@ const metaData = [
         frequency: [4, 3, 2, 2, 2, 3, 2, 3, 2],
         scaledAudio: '/cdn/audio/kathak.mp3',
         finalAudio: '/cdn/audio/kathak.mp3',
-        masks: ["../assets/masks/mask.jpg", "../assets/masks/mask1.jpg", "../assets/masks/mask2.jpg", "../assets/masks/mask3.jpg", "../assets/masks/mask4.jpg", "../assets/masks/mask5.jpg", "../assets/masks/mask6.jpg", "../assets/masks/mask7.jpg", "../assets/masks/mask8.jpg", "../assets/masks/mask8.jpg"],
+        masks: ["./assets/masks/mask.jpg", "./assets/masks/mask1.jpg", "./assets/masks/mask2.jpg", "./assets/masks/mask3.jpg", "./assets/masks/mask4.jpg", "./assets/masks/mask5.jpg", "./assets/masks/mask6.jpg", "./assets/masks/mask7.jpg", "./assets/masks/mask8.jpg", "./assets/masks/mask8.jpg"],
         img: './assets/filters/image.svg',
         headText: 'Kerala, India | 16th Century',
         description: 'It is a "story play" genre of art, but one distinguished by the elaborately colourful make-up and costumes of the traditional male actor-dancers. It synthesizes music, vocal performers, choreography and hand and facial gestures together to express ideas.',
@@ -20,7 +20,7 @@ const metaData = [
         scaledAudio: '/cdn/audio/kathak.mp3',
         finalAudio: '/cdn/audio/kathak.mp3',
         img: './assets/filters/image1.svg',
-        masks: ["../assets/masks/mask.jpg", "../assets/masks/mask1.jpg", "../assets/masks/mask2.jpg", "../assets/masks/mask3.jpg", "../assets/masks/mask4.jpg", "../assets/masks/mask4.jpg"],
+        masks: ["./assets/masks/mask.jpg", "./assets/masks/mask1.jpg", "./assets/masks/mask2.jpg", "./assets/masks/mask3.jpg", "./assets/masks/mask4.jpg", "./assets/masks/mask5.jpg", "./assets/masks/mask6.jpg", "./assets/masks/mask7.jpg", "./assets/masks/mask8.jpg", "./assets/masks/mask8.jpg"],
         headText: 'Kerala, India | 16th Century',
         description: 'It is a "story play" genre of art, but one distinguished by the elaborately colourful make-up and costumes of the traditional male actor-dancers. It synthesizes music, vocal performers, choreography and hand and facial gestures together to express ideas.',
         descriptonImage: './assets/dances/kathak.png'
@@ -33,7 +33,7 @@ const metaData = [
         scaledAudio: '/cdn/audio/kathak.mp3',
         finalAudio: '/cdn/audio/kathak.mp3',
         img: './assets/filters/image2.svg',
-        masks: ["../assets/masks/mask.jpg", "../assets/masks/mask1.jpg", "../assets/masks/mask2.jpg", "../assets/masks/mask3.jpg", "../assets/masks/mask4.jpg", "../assets/masks/mask4.jpg"],
+        masks: ["./assets/masks/mask.jpg", "./assets/masks/mask1.jpg", "./assets/masks/mask2.jpg", "./assets/masks/mask3.jpg", "./assets/masks/mask4.jpg", "./assets/masks/mask5.jpg", "./assets/masks/mask6.jpg", "./assets/masks/mask7.jpg", "./assets/masks/mask8.jpg", "./assets/masks/mask8.jpg"],
         headText: 'Kerala, India | 16th Century',
         description: 'It is a "story play" genre of art, but one distinguished by the elaborately colourful make-up and costumes of the traditional male actor-dancers. It synthesizes music, vocal performers, choreography and hand and facial gestures together to express ideas.',
         descriptonImage: './assets/dances/kathak.png'
@@ -46,7 +46,7 @@ const metaData = [
         scaledAudio: '/cdn/audio/kathak.mp3',
         finalAudio: '/cdn/audio/kathak.mp3',
         img: './assets/filters/image.svg',
-        masks: ["../assets/masks/mask.jpg", "../assets/masks/mask1.jpg", "../assets/masks/mask2.jpg", "../assets/masks/mask3.jpg", "../assets/masks/mask4.jpg", "../assets/masks/mask4.jpg"],
+        masks: ["./assets/masks/mask.jpg", "./assets/masks/mask1.jpg", "./assets/masks/mask2.jpg", "./assets/masks/mask3.jpg", "./assets/masks/mask4.jpg", "./assets/masks/mask5.jpg", "./assets/masks/mask6.jpg", "./assets/masks/mask7.jpg", "./assets/masks/mask8.jpg", "./assets/masks/mask8.jpg"],
         headText: 'Kerala, India | 16th Century',
         description: 'It is a "story play" genre of art, but one distinguished by the elaborately colourful make-up and costumes of the traditional male actor-dancers. It synthesizes music, vocal performers, choreography and hand and facial gestures together to express ideas.',
         descriptonImage: './assets/dances/kathak.png'
@@ -59,7 +59,7 @@ const metaData = [
         scaledAudio: '/cdn/audio/kathak.mp3',
         finalAudio: '/cdn/audio/kathak.mp3',
         img: './assets/filters/image.svg',
-        masks: ["../assets/masks/mask.jpg", "../assets/masks/mask1.jpg", "../assets/masks/mask2.jpg", "../assets/masks/mask3.jpg", "../assets/masks/mask4.jpg", "../assets/masks/mask4.jpg"],
+        masks: ["./assets/masks/mask.jpg", "./assets/masks/mask1.jpg", "./assets/masks/mask2.jpg", "./assets/masks/mask3.jpg", "./assets/masks/mask4.jpg", "./assets/masks/mask5.jpg", "./assets/masks/mask6.jpg", "./assets/masks/mask7.jpg", "./assets/masks/mask8.jpg", "./assets/masks/mask8.jpg"],
         headText: 'Kerala, India | 16th Century',
         description: 'It is a "story play" genre of art, but one distinguished by the elaborately colourful make-up and costumes of the traditional male actor-dancers. It synthesizes music, vocal performers, choreography and hand and facial gestures together to express ideas.',
         descriptonImage: './assets/dances/kathak.png'
@@ -72,7 +72,7 @@ const metaData = [
         scaledAudio: '/cdn/audio/kathak.mp3',
         finalAudio: '/cdn/audio/kathak.mp3',
         img: './assets/filters/image.svg',
-        masks: ["../assets/masks/mask.jpg", "../assets/masks/mask1.jpg", "../assets/masks/mask2.jpg", "../assets/masks/mask3.jpg", "../assets/masks/mask4.jpg", "../assets/masks/mask4.jpg"],
+        masks: ["./assets/masks/mask.jpg", "./assets/masks/mask1.jpg", "./assets/masks/mask2.jpg", "./assets/masks/mask3.jpg", "./assets/masks/mask4.jpg", "./assets/masks/mask5.jpg", "./assets/masks/mask6.jpg", "./assets/masks/mask7.jpg", "./assets/masks/mask8.jpg", "./assets/masks/mask8.jpg"],
         headText: 'Kerala, India | 16th Century',
         description: 'It is a "story play" genre of art, but one distinguished by the elaborately colourful make-up and costumes of the traditional male actor-dancers. It synthesizes music, vocal performers, choreography and hand and facial gestures together to express ideas.',
         descriptonImage: './assets/dances/kathak.png'
